@@ -13,6 +13,7 @@ app.get('/api',(req,res)=>{
 
 app.post('/users/auth',tokenVerification,(req,res)=>{
 
+    //Token Verification Done after the Execution of Middleware Function 
     jwt.verify(req.token,'hidev7#',(err,authdata)=>{
         if(err)
         {
@@ -31,11 +32,17 @@ app.post('/users/auth',tokenVerification,(req,res)=>{
 //path to Generate the Token
 
 app.get('/users/gettoken',(req,res)=>{
+    
+    //passing User Details to user variable
+    
 const user={
     Username:'Dev',
     Rollno:"19T014",
     Dpt:'Information Technology'
 }
+
+//To get Token from the Specified Path
+
     jwt.sign({user},'hidev7#',(err,token)=>{
         if(err)
         {
@@ -54,10 +61,18 @@ const user={
 
 function tokenVerification(req,res,next)
 {
+    //Getting token from the Authorization Header
     const  bearerHeader=req.headers['authorization'];
+    
+    //Splitting the Token using WhiteSpaces
     const bearer=bearerHeader.split(' ');
+    
+    //Getting the Token present in the First Index of the Array
     const  bearerToken=bearer[1];
+    
+    //Passing the token to the request object
     req.token=bearerToken;
+    
     next();
 }
 
