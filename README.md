@@ -1,4 +1,4 @@
-# Node-js-JWT-Authentication
+# Node-js-JWT
 
 To run the Project - Download Node modules and add to this project  -
 Use Postman Tool to verify the Result of this Code
